@@ -46,7 +46,7 @@ class Agent:
             for pow, j in enumerate(rewards[i:]):
                 discounted_rewards[i]+=j*(self.gamma**pow)
         
-        policy_grad=(-log_probs*discounted_rewards).sum()
+        policy_grad=(-log_probs*discounted_rewards).mean()
 
         self.policy_optimizer.zero_grad()
         policy_grad.backward()
